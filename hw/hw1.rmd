@@ -1,0 +1,143 @@
+통계학실험 2015. 09. 23
+==========
+
+## 2007-10927 컴퓨터공학부 최용철
+
+ 행동위험요인 감시시스템(The Behavioral Risk Factor Surveillance System)은 매년 미국
+에서 시행되는 대규모 전화 설문 조사이다. 이 조사에서는 응답자들의 현재 건강 상태 및 그
+들의 건강과 관련된 생활 습관 등을 조사한다. 이 조사에 관한 자세한 내용은 BRFSS 의 웹
+사이트에서 확인할 수 있다. (http://www.cdc.gov/brfss)  
+ 주어진 자료는 2000년도에 시행된 20,000명의 BRFSS 조사 데이터의 일부이며 전체 200개
+이상의 항목 중에서 간추린 9개의 항목을 포함하고 있다. 각 변수에 대한 설명은 다음과 같
+다.  
+ - genhlth : 범주형 자료, 전반적인 건강상태 (excellent/very good/good/fair/poor)
+ - exerany : 범주형 자료, 지난달의 운동 여부 (1=yes, 0=no)
+ - hlthplan : 범주형 자료, 건강보험 가입 여부 (1=yes, 0=no)
+ - smoke100 : 범주형 자료, 현재까지 최소 100개피 이상의 담배 흡연 여부 (1=yes, 0=no)
+ - height : 숫자형 자료, 신장 (inch)
+ - weight : 숫자형 자료, 체중 (pound)
+ - wtdesire : 숫자형 자료, 응답자가 생각하는 본인의 이상적인 체중 (pound)
+ - age : 숫자형 자료, 나이 (year)
+ - gender : 범주형 자료, 성별 (m=남성, f=여성)
+
+## Homework (1/2)
+
+### 예제 1. genhlth 변수에 대해 적절한 방법을 이용하여 요약해보자. 범주형 자료의 경우에는 어떠한 요약 방법을 사용할 수 있는가?
+
+```{r}
+local({
+  .Table <- with(cdc, table(genhlth))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+```
+
+### 예제 2. weight 변수에 대한 수치적 요약 값을 구해보자. 전체 응답자의 평균 몸무게는 얼마인가?
+
+```{r}
+numSummary(cdc[,"weight"], statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+### 예제 3. weight 변수에 대한 수치적 요약을 성별에 따라 구해보자. 이를 위해 [통계]-[수치적 요약]-[집단별 요약]에서 성별을 집단별 요약 변수로 선택한다. 성별에 따른 평균 체중은 차이가 있는가? 성별에 따른 집단별 상자그림을 통해서도 이를 확인해 보자.
+
+```{r}
+numSummary(cdc[,"weight"], groups=cdc$gender, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+```{r}
+Boxplot(weight~gender, data=cdc, id.method="y")
+```
+
+### 예제 4. weight 변수와 wtdesire 변수의 산점도를 그려보자. 두 변수 사이에는 어떠한 관계가 존재한다고 보여지는가? 두 변수의 상관계수는 무엇은 나타내고 있는가?
+
+```{r}
+scatterplot(wtdesire~weight, reg.line=lm, smooth=FALSE, spread=FALSE, id.method='mahal', id.n = 2, boxplots=FALSE, span=0.5, data=cdc)
+```
+
+```{r}
+cor(cdc[,c("weight","wtdesire")], use="complete")
+```
+
+
+### 예제 5. wtdesire 변수와 weight 변수의 차를 계산하여 새로운 변수 wdiff 를 만들어보자. wdiff 의 분포는 어떠한가? 수치적 요약과 그래프 요약을 통해 살펴보자. 이것이 의미하는 바는 무엇인가?
+
+```{r}
+cdc$wdiff <- with(cdc, wtdesire-weight)
+```
+
+```{r}
+numSummary(cdc[,"wdiff"], statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+```
+
+```{r}
+scatterplot(wdiff~weight, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 2, boxplots='xy', span=0.5, data=cdc)
+```
+
+### 예제 6. age 변수를 이용하여 히스토그램을 그려보자. 그리고 구간의 수를 50, 100으로 바꿔가며 동일한 히스토그램을 그린 후 비교해보자.
+
+```{r}
+with(cdc, Hist(age, scale="frequency", breaks="Sturges", col="darkgray"))
+```
+
+```{r}
+with(cdc, Hist(age, scale="frequency", breaks=50, col="darkgray"))
+```
+
+```{r}
+with(cdc, Hist(age, scale="frequency", breaks=100, col="darkgray"))
+```
+
+- (참고) 히스토그램은 자료의 형태를 파악하기 위한 쉬운 방법이지만 구간의 수가 달라짐에 따라 그 모양이 조금씩 달라질 수 있다.
+
+## Homework (2/2)
+
+```{r}
+set.seed(1000)
+```
+
+### 1. 1부터 100 사이에서 40개의 정수를 임의로 선택하여 저장하자.
+
+```{r}
+x = 1:100
+y = sample(x, 40)
+```
+
+### 1-1. 예제 1에서 만들어진 벡터를 사용하여 5행 8열의 행렬을 생성하시오
+
+```{r}
+mat = matrix(data = y, nrow = 5, ncol = 8)
+mat
+```
+
+### 1-2. 예제 1에서 생성된 행렬에서 2행과 3행만을 추출하여 저장하시오.
+
+```{r}
+mat[c(2,3),]
+```
+
+### 1-3. 예제 1에서 생성된 행렬에서 (1,4,7,8)열을 추출하여 저장하시오.
+
+```{r}
+mat[,c(1,4,7,8)]
+```
+
+### 1-4. 예제 1에서 생성된 행렬의 7번째 열의 평균과 분산을 구하시오.
+
+```{r}
+mean(mat[,7])
+var(mat[,7])
+```
+
+### 예제 2. 1부터 20 사이에서 1개의 숫자를 임의로 선택하여 저장하자. 이 숫자가 10 이상이면 “P”를 출력하고 10 미만이면 “NP”를 출력하는 코드를 작성해보시오
+
+```{r}
+if (sample(1:20, 1) >= 10) {print("P")} else {print("NP")}
+```
+
+### 예제 3. 1부터 20 사이에서 8개의 숫자를 임의로 선택하여 저장하자. 8개의 숫자들 각각에 대해 숫자가 10 이상이면 “P”를 출력하고 10 미만이면 “NP”를 출력하는 코드를 작성해보시오.
+
+```{r}
+for(i in sample(1:20, 8)){if (i>=10) {print("P")} else {print("NP")}}
+```
