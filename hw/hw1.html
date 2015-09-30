@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html><HTML><HEAD>
+<META content="text/html; charset=utf-8" http-equiv="Content-Type"><TITLE>통계학실험 
+2015. 09. 23</TITLE>
+<SCRIPT type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</SCRIPT>
+<!-- Styles for R syntax highlighter -->
+<STYLE type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</STYLE>
+<!-- R syntax highlighter -->
+<SCRIPT type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</SCRIPT>
+
+<STYLE type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</STYLE>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16575"></HEAD>
+<BODY>
+<H1>통계학실험 2015. 09. 23</H1>
+<H2>2007-10927 컴퓨터공학부 최용철</H2>
+<P>행동위험요인 감시시스템(The Behavioral Risk Factor Surveillance System)은 매년 미국 에서 시행되는 
+대규모 전화 설문 조사이다. 이 조사에서는 응답자들의 현재 건강 상태 및 그 들의 건강과 관련된 생활 습관 등을 조사한다. 이 조사에 관한 
+자세한 내용은 BRFSS 의 웹 사이트에서 확인할 수 있다. (<A 
+href="http://www.cdc.gov/brfss">http://www.cdc.gov/brfss</A>)<BR>주어진 자료는 2000년도에 
+시행된 20,000명의 BRFSS 조사 데이터의 일부이며 전체 200개 이상의 항목 중에서 간추린 9개의 항목을 포함하고 있다. 각 변수에 대한 
+설명은 다음과 같 다.  </P>
+<UL>
+  <LI>genhlth : 범주형 자료, 전반적인 건강상태 (excellent/very good/good/fair/poor)</LI>
+  <LI>exerany : 범주형 자료, 지난달의 운동 여부 (1=yes, 0=no)</LI>
+  <LI>hlthplan : 범주형 자료, 건강보험 가입 여부 (1=yes, 0=no)</LI>
+  <LI>smoke100 : 범주형 자료, 현재까지 최소 100개피 이상의 담배 흡연 여부 (1=yes, 0=no)</LI>
+  <LI>height : 숫자형 자료, 신장 (inch)</LI>
+  <LI>weight : 숫자형 자료, 체중 (pound)</LI>
+  <LI>wtdesire : 숫자형 자료, 응답자가 생각하는 본인의 이상적인 체중 (pound)</LI>
+  <LI>age : 숫자형 자료, 나이 (year)</LI>
+  <LI>gender : 범주형 자료, 성별 (m=남성, f=여성)</LI></UL>
+<H2>Homework (½)</H2>
+<H3>예제 1. genhlth 변수에 대해 적절한 방법을 이용하여 요약해보자. 범주형 자료의 경우에는 어떠한 요약 방법을 사용할 수 
+있는가?</H3>
+<BLOCKQUOTE>
+  <P>빈도 분포를 사용한다.</P></BLOCKQUOTE><PRE><CODE class="r">local({
+  .Table &lt;- with(cdc, table(genhlth))
+  cat("\ncounts:\n")
+  print(.Table)
+  cat("\npercentages:\n")
+  print(round(100*.Table/sum(.Table), 2))
+})
+</CODE></PRE><PRE><CODE>## 
+## counts:
+## genhlth
+## excellent very good      good      fair      poor 
+##      4657      6972      5675      2019       677 
+## 
+## percentages:
+## genhlth
+## excellent very good      good      fair      poor 
+##     23.29     34.86     28.38     10.10      3.38
+</CODE></PRE>
+<H3>예제 2. weight 변수에 대한 수치적 요약 값을 구해보자. 전체 응답자의 평균 몸무게는 얼마인가?</H3>
+<BLOCKQUOTE>
+  <P>아래 결과의 mean 값</P></BLOCKQUOTE><PRE><CODE class="r">numSummary(cdc[,"weight"], statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+</CODE></PRE><PRE><CODE>##   mean    sd IQR 0% 25% 50% 75% 100%     n
+##  169.7 40.08  50 68 140 165 190  500 20000
+</CODE></PRE>
+<H3>예제 3. weight 변수에 대한 수치적 요약을 성별에 따라 구해보자. 이를 위해 [통계]-[수치적 요약]-[집단별 요약]에서 성별을 
+집단별 요약 변수로 선택한다. 성별에 따른 평균 체중은 차이가 있는가? 성별에 따른 집단별 상자그림을 통해서도 이를 확인해 보자.</H3>
+<BLOCKQUOTE>
+  <P>남자의 체중이 무겁다</P></BLOCKQUOTE><PRE><CODE class="r">numSummary(cdc[,"weight"], groups=cdc$gender, statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+</CODE></PRE><PRE><CODE>##    mean    sd IQR 0% 25% 50% 75% 100% data:n
+## m 189.3 36.55  45 78 165 185 210  500   9569
+## f 151.7 34.30  42 68 128 145 170  495  10431
+</CODE></PRE><PRE><CODE class="r">Boxplot(weight~gender, data=cdc, id.method="y")
+</CODE></PRE>
+<P><IMG alt="plot of chunk unnamed-chunk-4" src=""> </P><PRE><CODE>##  [1] "303"   "9558"  "11333" "13632" "15967" "18065" "1995"  "15720"
+##  [9] "861"   "1279"  "2659"  "2944"  "13177" "6797"  "15190" "769"  
+## [17] "4445"  "19319" "7160"  "4612"  "1492"  "2587"  "5778"  "13607"
+## [25] "840"   "617"
+</CODE></PRE>
+<H3>예제 4. weight 변수와 wtdesire 변수의 산점도를 그려보자. 두 변수 사이에는 어떠한 관계가 존재한다고 보여지는가? 두 
+변수의 상관계수는 무엇은 나타내고 있는가?</H3>
+<BLOCKQUOTE>
+  <P>상관계수는 약 0.8로 대체적으로 자신의 몸무게에 근거해 목표 체중을 설정하고 있다. 크게 욕심 내는 사람은 없지만, 몸무게가 많이 
+  나갈수록 욕심이 커보이는 경향이 있다.</P></BLOCKQUOTE><PRE><CODE class="r">scatterplot(wtdesire~weight, reg.line=lm, smooth=FALSE, spread=FALSE, id.method='mahal', id.n = 2, boxplots=FALSE, span=0.5, data=cdc)
+</CODE></PRE>
+<P><IMG alt="plot of chunk unnamed-chunk-5" src=""> </P><PRE><CODE>## 10034 16874 
+## 10034 16874
+</CODE></PRE><PRE><CODE class="r">cor(cdc[,c("weight","wtdesire")], use="complete")
+</CODE></PRE><PRE><CODE>##          weight wtdesire
+## weight   1.0000   0.8001
+## wtdesire 0.8001   1.0000
+</CODE></PRE>
+<H3>예제 5. wtdesire 변수와 weight 변수의 차를 계산하여 새로운 변수 wdiff 를 만들어보자. wdiff 의 분포는 
+어떠한가? 수치적 요약과 그래프 요약을 통해 살펴보자. 이것이 의미하는 바는 무엇인가?</H3>
+<BLOCKQUOTE>
+  <P>몸무게가 적은 사람은 살이 쪘으면하고, 몸무게가 많이 나가는 사람은 살이 빠졌으면 한다. 대체적으로 자신의 체중이 줄길 바라고 
+  있다.</P></BLOCKQUOTE><PRE><CODE class="r">cdc$wdiff &lt;- with(cdc, wtdesire-weight)
+</CODE></PRE><PRE><CODE class="r">numSummary(cdc[,"wdiff"], statistics=c("mean", "sd", "IQR", "quantiles"), quantiles=c(0,.25,.5,.75,1))
+</CODE></PRE><PRE><CODE>##    mean    sd IQR   0% 25% 50% 75% 100%     n
+##  -14.59 24.05  21 -300 -21 -10   0  500 20000
+</CODE></PRE><PRE><CODE class="r">scatterplot(wdiff~weight, reg.line=lm, smooth=TRUE, spread=TRUE, id.method='mahal', id.n = 2, boxplots='xy', span=0.5, data=cdc)
+</CODE></PRE>
+<P><IMG alt="plot of chunk unnamed-chunk-9" src=""> </P><PRE><CODE>## 10034 16874 
+## 10034 16874
+</CODE></PRE>
+<H3>예제 6. age 변수를 이용하여 히스토그램을 그려보자. 그리고 구간의 수를 50, 100으로 바꿔가며 동일한 히스토그램을 그린 후 
+비교해보자.</H3>
+<BLOCKQUOTE>
+  <P>20대 초반의 빈도의 변화가 크게 두드러진다.</P></BLOCKQUOTE><PRE><CODE class="r">with(cdc, Hist(age, scale="frequency", breaks="Sturges", col="darkgray"))
+</CODE></PRE>
+<P><IMG alt="plot of chunk unnamed-chunk-10" src=""> </P><PRE><CODE class="r">with(cdc, Hist(age, scale="frequency", breaks=50, col="darkgray"))
+</CODE></PRE>
+<P><IMG alt="plot of chunk unnamed-chunk-11" src=""> </P><PRE><CODE class="r">with(cdc, Hist(age, scale="frequency", breaks=100, col="darkgray"))
+</CODE></PRE>
+<P><IMG alt="plot of chunk unnamed-chunk-12" src=""> </P>
+<UL>
+  <LI>(참고) 히스토그램은 자료의 형태를 파악하기 위한 쉬운 방법이지만 구간의 수가 달라짐에 따라 그 모양이 조금씩 달라질 수 
+  있다.</LI></UL>
+<H2>Homework (2/2)</H2><PRE><CODE class="r">set.seed(1000)
+</CODE></PRE>
+<H3>1. 1부터 100 사이에서 40개의 정수를 임의로 선택하여 저장하자.</H3><PRE><CODE class="r">x = 1:100
+y = sample(x, 40)
+</CODE></PRE>
+<H3>1-1. 예제 1에서 만들어진 벡터를 사용하여 5행 8열의 행렬을 생성하시오</H3><PRE><CODE class="r">mat = matrix(data = y, nrow = 5, ncol = 8)
+mat
+</CODE></PRE><PRE><CODE>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]   33    7   32   95   14   51   40   46
+## [2,]   76   70   97   42   64   34    4    2
+## [3,]   12   55   28   53   23   61   39   96
+## [4,]   68   20   99   85    6   82   65   37
+## [5,]   50   24   66   48   84    9   74   92
+</CODE></PRE>
+<H3>1-2. 예제 1에서 생성된 행렬에서 2행과 3행만을 추출하여 저장하시오.</H3><PRE><CODE class="r">mat[c(2,3),]
+</CODE></PRE><PRE><CODE>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]   76   70   97   42   64   34    4    2
+## [2,]   12   55   28   53   23   61   39   96
+</CODE></PRE>
+<H3>1-3. 예제 1에서 생성된 행렬에서 (1,4,7,8)열을 추출하여 저장하시오.</H3><PRE><CODE class="r">mat[,c(1,4,7,8)]
+</CODE></PRE><PRE><CODE>##      [,1] [,2] [,3] [,4]
+## [1,]   33   95   40   46
+## [2,]   76   42    4    2
+## [3,]   12   53   39   96
+## [4,]   68   85   65   37
+## [5,]   50   48   74   92
+</CODE></PRE>
+<H3>1-4. 예제 1에서 생성된 행렬의 7번째 열의 평균과 분산을 구하시오.</H3><PRE><CODE class="r">mean(mat[,7])
+</CODE></PRE><PRE><CODE>## [1] 44.4
+</CODE></PRE><PRE><CODE class="r">var(mat[,7])
+</CODE></PRE><PRE><CODE>## [1] 745.3
+</CODE></PRE>
+<H3>예제 2. 1부터 20 사이에서 1개의 숫자를 임의로 선택하여 저장하자. 이 숫자가 10 이상이면 “P”를 출력하고 10 미만이면 
+“NP”를 출력하는 코드를 작성해보시오</H3><PRE><CODE class="r">if (sample(1:20, 1) &gt;= 10) {print("P")} else {print("NP")}
+</CODE></PRE><PRE><CODE>## [1] "P"
+</CODE></PRE>
+<H3>예제 3. 1부터 20 사이에서 8개의 숫자를 임의로 선택하여 저장하자. 8개의 숫자들 각각에 대해 숫자가 10 이상이면 “P”를 
+출력하고 10 미만이면 “NP”를 출력하는 코드를 작성해보시오.</H3><PRE><CODE class="r">for(i in sample(1:20, 8)){if (i&gt;=10) {print("P")} else {print("NP")}}
+</CODE></PRE><PRE><CODE>## [1] "P"
+## [1] "NP"
+## [1] "P"
+## [1] "P"
+## [1] "P"
+## [1] "P"
+## [1] "NP"
+## [1] "NP"
+</CODE></PRE></BODY></HTML>
